@@ -1,0 +1,60 @@
+// Core Concepts
+CREATE (re:Concept {name: 'Renewable Energy'});
+CREATE (ei:Impact {name: 'Environmental Impact'});
+CREATE (ec:Impact {name: 'Economic Impact'});
+
+// Technologies
+CREATE (solar:Technology {name: 'Solar Energy'});
+CREATE (wind:Technology {name: 'Wind Energy'});
+CREATE (hydro:Technology {name: 'Hydroelectric Power'});
+CREATE (geo:Technology {name: 'Geothermal Energy'});
+CREATE (bio:Technology {name: 'Bioenergy'});
+
+// Benefits and Metrics
+CREATE (carbon:Benefit {name: 'Carbon Emissions Reduction'});
+CREATE (air_quality:Benefit {name: 'Air Quality Improvement'});
+CREATE (resource_eff:Benefit {name: 'Resource Efficiency'});
+CREATE (energy_sec:Benefit {name: 'Energy Security'});
+CREATE (jobs:Benefit {name: 'Job Creation'});
+
+// Challenges and Trade-offs
+CREATE (land_use:Challenge {name: 'Land Use Concerns'});
+CREATE (initial_cost:Challenge {name: 'High Initial Costs'});
+CREATE (intermittency:Challenge {name: 'Intermittency Issues'});
+
+// Policies and Initiatives
+CREATE (subs:Policy {name: 'Government Subsidies'});
+CREATE (paris:Policy {name: 'Paris Agreement'});
+CREATE (carbon_tax:Policy {name: 'Carbon Taxation'});
+CREATE (rd_funding:Policy {name: 'Research and Development Funding'});
+
+// Stakeholders
+CREATE (dev_nations:Stakeholder {name: 'Developed Nations'});
+CREATE (dev_countries:Stakeholder {name: 'Developing Nations'});
+CREATE (fossil_fuel:Industry {name: 'Fossil Fuel Industry'});
+CREATE (green_energy:Industry {name: 'Green Energy Industry'});
+
+// Relationships
+CREATE (re)-[:PROMOTES]->(ei);
+CREATE (re)-[:PROMOTES]->(ec);
+CREATE (solar)-[:IS_A]->(re);
+CREATE (wind)-[:IS_A]->(re);
+CREATE (hydro)-[:IS_A]->(re);
+CREATE (geo)-[:IS_A]->(re);
+CREATE (bio)-[:IS_A]->(re);
+
+CREATE (solar)-[:IMPROVES]->(air_quality);
+CREATE (wind)-[:ENHANCES]->(energy_sec);
+CREATE (hydro)-[:SUPPORTS]->(resource_eff);
+CREATE (carbon)-[:CONTRIBUTES_TO]->(ei);
+CREATE (jobs)-[:CONTRIBUTES_TO]->(ec);
+CREATE (air_quality)-[:BENEFITS]->(ei);
+CREATE (resource_eff)-[:BENEFITS]->(ei);
+CREATE (re)-[:SUPPORTED_BY]->(subs);
+CREATE (paris)-[:ENCOURAGES]->(re);
+CREATE (carbon_tax)-[:DISCOURAGES]->(fossil_fuel);
+CREATE (rd_funding)-[:PROMOTES]->(re);
+
+CREATE (dev_nations)-[:INVESTS_IN]->(re);
+CREATE (dev_countries)-[:FACES_BARRIERS]->(initial_cost);
+CREATE (fossil_fuel)-[:COMPETES_WITH]->(green_energy);

@@ -1,0 +1,4 @@
+torch-geometric 
+requests 
+neo4j
+
